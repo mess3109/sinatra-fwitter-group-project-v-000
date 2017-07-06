@@ -19,6 +19,18 @@ enable :sessions
     @user = current_user
     erb :'/tweets/tweets'
   end
+  #create
+  get '/tweets/new' do
+    erb :'create_tweet'
+  end
+binding.pry
+  post '/tweets' do
+    @tweet= Tweet.create(content: params["content"])
+    @tweet.save
+    redirect("/tweets/#{@tweet.id}")
+  end
+
+
 
   #show
   get 'tweets/:id' do
@@ -32,12 +44,6 @@ enable :sessions
 
   post 'tweets/:id' do
 
-  end
-
-  post '/tweets' do
-    @tweet= Tweet.create(content: params["content"])
-    @tweet.save
-    redirect("/tweets/#{@tweet.id}")
   end
 
   get '/signup' do
