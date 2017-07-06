@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 enable :sessions
 
-  get 'signup' do
+  get '/signup' do
     erb :signup
   end
 
