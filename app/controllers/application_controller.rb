@@ -1,5 +1,6 @@
 require './config/environment'
 
+
 class ApplicationController < Sinatra::Base
 enable :sessions
 
@@ -14,16 +15,16 @@ enable :sessions
     erb :index
   end
 
-  
+  #helpers do
+    # def logged_in?
+    #   !!session[:user_id]
+    # end #will return True or False
+    #
+    # def current_user
+    #   logged_in? ? User.find(session[:user_id]) : nil
+    # end
+#  end
 
-  helpers do
-    def logged_in?
-      !!session[:user_id]
-    end #will return True or False
 
-    def current_user
-      logged_in? ? User.find(session[:user_id]) : nil
-    end
-  end
 
 end
