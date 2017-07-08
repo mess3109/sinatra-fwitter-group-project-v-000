@@ -9,18 +9,19 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-      user = User.new(username: params[:username], email: params[:email], password: params[:password])
-      if user.username.empty? || user.password.nil? || user.email.empty?
+      if params[:username].empty? || params[:password].empty? || params[:email].empty?
         redirect "/signup"
       else
+        user = User.new(username: params[:username], email: params[:email], password: params[:password])
         user.save
+        session[:user_id]= user.id
         redirect "/tweets"
       end
     end
 
     get '/login' do
       if Helper.logged_in?(session)
-        redirects to "/tweets"
+        redirect to "/tweets"
       else
         erb :'users/login'
       end

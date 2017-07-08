@@ -1,6 +1,6 @@
 <h3>Tweet:</h3>
-<ul>
-  <%@user.tweet.each do |tweet| %>
-  <li><%= tweet.name %></li>
-  <%end%>
-</ul>
+  <%= @tweet.content %>
+<form action="/tweets/<%=@tweet.id%>/delete" method="Post">
+  <input type="submit" value="Delete Tweet">
+</form>
+<a href="/tweets/<%=@tweet.id%>/edit">Edit Tweet</a>
